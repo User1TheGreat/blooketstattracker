@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blooket Stats Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Blooket Tracker</h1>
+    <p>Track your quiz progress live!</p>
+  </header>
+
+  <main>
+    <h2>Answer a Question</h2>
+    <button onclick="answer(true)">✅ Correct</button>
+    <button onclick="answer(false)">❌ Incorrect</button>
+  </main>
+
+  <footer>
+    <h3>Your Stats</h3>
+    <p>Correct: <span id="correct">0</span></p>
+    <p>Total Questions: <span id="total">0</span></p>
+    <p>Accuracy: <span id="accuracy">0%</span></p>
+  </footer>
+
+  <script>
+    let correct = 0;
+    let total = 0;
+
+    function answer(isCorrect) {
+      total++;
+      if (isCorrect) correct++;
+
+      document.getElementById("correct").textContent = correct;
+      document.getElementById("total").textContent = total;
+
+      let acc = total > 0 ? ((correct / total) * 100).toFixed(1) : 0;
+      document.getElementById("accuracy").textContent = acc + "%";
+    }
+  </script>
+</body>
+</html>
